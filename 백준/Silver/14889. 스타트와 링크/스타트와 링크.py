@@ -1,4 +1,6 @@
 from itertools import combinations
+from sys import stdin
+input = stdin.readline
 
 n = int(input())
 scoreboard = [list(map(int, input().split())) for _ in range(n)]
