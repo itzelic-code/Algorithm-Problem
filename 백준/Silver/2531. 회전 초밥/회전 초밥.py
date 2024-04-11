@@ -1,4 +1,6 @@
 from collections import defaultdict
+from sys import stdin
+input = stdin.readline
 
 n, d, k, c = map(int, input().split())
 sushi = [int(input()) for _ in range(n)]
