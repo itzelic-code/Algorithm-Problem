@@ -1,8 +1,6 @@
 def solution(food):
-    left = ''
+    answer = ''
     for i in range(1, len(food)):
-        print("i : ", i)
-        left += str(i) * (food[i]//2)
-        print("left : ", str(left))
+        answer += str(i) * (food[i]//2)
 
-    return left + '0' + left[::-1]
+    return answer + '0' + answer[::-1]
