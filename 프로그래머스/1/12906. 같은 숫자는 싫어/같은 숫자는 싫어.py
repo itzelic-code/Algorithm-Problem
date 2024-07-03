@@ -1,8 +1,7 @@
-def solution(arr):
+def solution(s):
     answer = []
-    prev_num = None
-    for n in arr:
-        if n != prev_num:
-            answer.append(n)
-            prev_num = n
+    for c in s:
+        if len(answer) == 0 or answer[-1] != c:
+            answer.append(c)
+
     return answer
