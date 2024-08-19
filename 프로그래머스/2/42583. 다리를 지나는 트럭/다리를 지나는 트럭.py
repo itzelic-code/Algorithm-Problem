@@ -8,7 +8,7 @@ def solution(bridge_length, weight, truck_weights):
     currentWeight = 0
     while len(truck_weights)!=0:
         time += 1
-
+        
         currentWeight -= bridge.popleft()
 
         if currentWeight + truck_weights[0] <= weight:
