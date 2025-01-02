@@ -1,46 +1,51 @@
-class TreeNode:
-    def __init__(self, name):
-        self.name = name
-        self.left = None
-        self.right = None
+import sys
+input = sys.stdin.readline
 
-def preorder(node):
-    if node is None:
-        return
-    print(node.name, end='')  # 루트 처리
-    preorder(node.left)  # 왼쪽 서브트리 순회
-    preorder(node.right)  # 오른쪽 서브트리 순회
+class Node:
+    def __init__(self, data, left_node, right_node):
+        self.data = data
+        self.left_node = left_node
+        self.right_node = right_node
 
-def inorder(node):
-    if node is None:
-        return
-    inorder(node.left)  # 왼쪽 서브트리 순회
-    print(node.name, end='')  # 루트 처리
-    inorder(node.right)  # 오른쪽 서브트리 순회
+# 전위 순회 (Pre-order Traversal)
+def pre_order(node):
+    print(node.data, end='') # 자기 자신을 먼저 출력
+    if node.left_node != None:
+        pre_order(tree[node.left_node])
+    if node.right_node != None:
+        pre_order(tree[node.right_node])
 
-def postorder(node):
-    if node is None:
-        return
-    postorder(node.left)  # 왼쪽 서브트리 순회
-    postorder(node.right)  # 오른쪽 서브트리 순회
-    print(node.name, end='')  # 루트 처리
+# 중위 순회 (In-order Traversal)
+def in_order(node):
+    if node.left_node != None:
+        in_order(tree[node.left_node])
+    print(node.data, end='')
+    if node.right_node != None:
+        in_order(tree[node.right_node])
 
-N = int(input())
+# 후위 순회 (Post-order Traversal)
+def post_order(node):
+    if node.left_node != None:
+        post_order(tree[node.left_node])
+    if node.right_node != None:
+        post_order(tree[node.right_node])
+    print(node.data, end='')
+
+# 입력
+n = int(input().rstrip())
 tree = {}
 
-for _ in range(N):
-    root, left, right = input().split()
-    if root not in tree:
-        tree[root] = TreeNode(root)
-    if left != '.':
-        tree[root].left = TreeNode(left)
-        tree[left] = tree[root].left
-    if right != '.':
-        tree[root].right = TreeNode(right)
-        tree[right] = tree[root].right
+for i in range(n):
+    data, left_node, right_node = input().rstrip().split()
+    if left_node == ".":
+        left_node = None
+    if right_node == ".":
+        right_node = None
+    tree[data] = Node(data, left_node, right_node)
 
-preorder(tree['A'])
+# 순회 함수 호출
+pre_order(tree['A'])
 print()
-inorder(tree['A'])
+in_order(tree['A'])
 print()
-postorder(tree['A'])
+post_order(tree['A'])
