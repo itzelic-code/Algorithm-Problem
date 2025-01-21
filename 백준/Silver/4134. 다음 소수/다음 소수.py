@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 T = int(input())
 li = [int(input()) for _ in range(T)]
 
