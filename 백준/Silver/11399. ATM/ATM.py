@@ -1,13 +1,8 @@
-import sys
+import sys, itertools
 input = sys.stdin.readline
 
 N = int(input())
 P = sorted(map(int, input().split()))
 
-wait = 0
-answer = 0
-for i in P:
-    wait += i
-    answer += wait
-
-print(answer)
+wait = itertools.accumulate(P)
+print(sum(wait))
